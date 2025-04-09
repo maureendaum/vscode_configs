@@ -1,0 +1,78 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python Debugger: Current File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "env": {
+                "TEST_ENV_VAR": "test_value",
+            }
+        },
+        {
+            "name": "FastAPI Server",
+            "type": "debugpy",
+            "request": "launch",
+            "justMyCode": true,
+            "program": "${workspaceFolder}/main.py",
+            "consoleName": "FastAPI Server",
+            "presentation": {
+                "group": "fastapi-celery",
+            }
+        },
+        {
+            "name": "Celery Worker",
+            "type": "debugpy",
+            "request": "launch",
+            "justMyCode": true,
+            "module": "celery",
+            "args": [
+                "-A",
+                "tasks",
+                "worker",
+                "--loglevel=info"
+            ],
+            "preLaunchTask": "Start Redis",
+            "postDebugTask": "Stop Redis",
+            "consoleName": "Celery Worker",
+            "presentation": {
+                "group": "fastapi-celery",
+            },
+            "env": {
+                "CELERY_REDIS_PORT": "6389",
+            }
+        },
+        {
+            "name": "Test FastAPI Server",
+            "type": "debugpy",
+            "request": "launch",
+            "justMyCode": true,
+            "module": "pytest",
+            "consoleName": "Test FastAPI Server",
+            "args": [
+                "test_main.py",
+                "-v",
+                "--durations=0",
+            ],
+            "presentation": {
+                "group": "fastapi-celery",
+            },
+        },
+    ],
+    "compounds": [
+        {
+            "name": "FastAPI + Celery",
+            "configurations": ["FastAPI Server", "Celery Worker"],
+            "presentation": {
+                "group": "fastapi-celery",
+            },
+            "stopAll": true
+        }
+    ]
+}
