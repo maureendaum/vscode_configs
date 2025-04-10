@@ -26,3 +26,5 @@ cmd + shift + P > Python: Select Interpreter > ./.venv/bin/python
 
 ## Usage
 The following video shows the workflow of launching debug processes, setting breakpoints, and using the debug console (`cmd + shift + y`) to inspect variables.
+
+https://github.com/user-attachments/assets/1824e909-e7e8-4dae-a487-51b5e647b4f2
