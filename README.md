@@ -7,6 +7,7 @@ It includes configurations to:
 * Start a FastAPI web server
 * Start a Celery instance with Redis as a broker. The configuration also launches Redis and shuts it down.
 * Run tests using `pytest`
+* Run and debug a streamlit app
 
 ## Set up
 This project assumes you have `docker` available.

@@ -64,6 +64,17 @@
                 "group": "fastapi-celery",
             },
         },
+        {
+            "name": "Debug Streamlit App",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "streamlit",
+            "console": "integratedTerminal",
+            "args": [
+                "run",
+                "streamlit_app.py",
+            ]
+        }
     ],
     "compounds": [
         {
